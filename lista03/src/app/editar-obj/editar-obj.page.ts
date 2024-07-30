@@ -58,9 +58,8 @@ export class EditarObjPage implements OnInit {
       console.log("Vetor interesses: " + JSON.stringify(this.obj.interesses))
 
       this.servico.editarItem(this.obj);
-      this.rota.navigate(['listar-dados']);
-      this.mensagem('Obj editado com sucesso!', 3000, 'success');
-
+      this.rota.navigate(['home']);
+      
     }
   }
 

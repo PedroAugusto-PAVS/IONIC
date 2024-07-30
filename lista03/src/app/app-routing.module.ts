@@ -20,10 +20,6 @@ const routes: Routes = [
     loadChildren: () => import('./cadastro/cadastro.module').then( m => m.CadastroPageModule)
   },
   {
-    path: 'listar-dados',
-    loadChildren: () => import('./listar-dados/listar-dados.module').then( m => m.ListarDadosPageModule)
-  },
-  {
     path: 'visualizar-dados-obj', //Adicionado agora a pouco
     loadChildren: () => import('./visualizar-dados-obj/visualizar-dados-obj.module').then( m => m.VisualizarDadosObjPageModule)
   },

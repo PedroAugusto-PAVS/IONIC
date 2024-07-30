@@ -24,12 +24,14 @@
 
     <!--Input do genero-->
     <ion-item>
-      <ion-label position="floating">Gênero</ion-label>
-      <ion-select name="genero" [(ngModel)]="dadosForm.genero" interface="action-sheet" required>
-        <ion-select-option value="masculino">Masculino</ion-select-option>
-        <ion-select-option value="feminino">Feminino</ion-select-option>
-        <ion-select-option value="outro">Outro</ion-select-option>
-      </ion-select>
+      <ion-label>Gênero</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-radio-group name="genero" [(ngModel)]="dadosForm.genero" interface="action-sheet" required>
+        <ion-radio value="masculino">Masculino</ion-radio><br>
+        <ion-radio value="feminino">Feminino</ion-radio><br>
+        <ion-radio value="outro">Outro</ion-radio><br>
+      </ion-radio-group>
     </ion-item>
 
     <!--Input do email-->
@@ -85,6 +87,7 @@
       <ion-toggle name="newsletter" [(ngModel)]="dadosForm.newsletter"></ion-toggle>
     </ion-item>
 
-    <ion-button type="submit" expand="block" [disabled]="!form.valid">Salvar</ion-button>
+    <ion-button id="open-toast" type="submit" expand="block" [disabled]="!form.valid">Salvar</ion-button>
+    <ion-toast trigger="open-toast" color="sucess" message="Usuario Cadastrado com Sucesso!" [duration]="5000"></ion-toast>
   </form>
 </ion-content>
