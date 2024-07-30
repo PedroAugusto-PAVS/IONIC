@@ -1,0 +1,62 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Visualizar Dados Objeto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{objRetornado.nome}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+
+      <ion-item>
+        <ion-label>Idade</ion-label>
+        <ion-label>{{objRetornado.idade}}</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Gênero</ion-label>
+        <ion-label>{{objRetornado.genero}}</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>E-mail</ion-label>
+        <ion-label>{{objRetornado.email}}</ion-label>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label>Telefone</ion-label>
+        <ion-label>{{objRetornado.telefone}}</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Endereço</ion-label>
+        <ion-label>{{objRetornado.endereco}}</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Cidade</ion-label>
+        <ion-label>{{objRetornado.cidade}}</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Interesses</ion-label>
+        <ion-label>{{interessesString}}</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Newsletter</ion-label>
+        <ion-label>{{objRetornado.newsletter ? 'Sim' : 'Não'}}</ion-label>
+      </ion-item>
+
+    </ion-card-content>
+
+  </ion-card>
+
+</ion-content>

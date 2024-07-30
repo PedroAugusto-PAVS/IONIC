@@ -1,0 +1,90 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Cadastro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form #form="ngForm" (ngSubmit)="salvar(form)">
+    
+    <!--Input do Nome-->
+    <ion-item>
+      <ion-label position="floating">Nome</ion-label>
+      <ion-input name="nome" type="text" [(ngModel)]="dadosForm.nome" required></ion-input>
+    </ion-item>
+
+    <!--Input da idade-->
+    <ion-item>
+      <ion-label position="floating">Idade</ion-label>
+      <ion-input name="idade" type="text" [(ngModel)]="dadosForm.idade" required></ion-input>
+    </ion-item>
+
+    <!--Input do genero-->
+    <ion-item>
+      <ion-label position="floating">Gênero</ion-label>
+      <ion-select name="genero" [(ngModel)]="dadosForm.genero" interface="action-sheet" required>
+        <ion-select-option value="masculino">Masculino</ion-select-option>
+        <ion-select-option value="feminino">Feminino</ion-select-option>
+        <ion-select-option value="outro">Outro</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!--Input do email-->
+    <ion-item>
+      <ion-label position="floating">E-mail</ion-label>
+      <ion-input name="email" type="email" [(ngModel)]="dadosForm.email" required></ion-input>
+    </ion-item>
+
+    <!--Input do telefone-->
+    <ion-item>
+      <ion-label position="floating">Telefone</ion-label>
+      <ion-input name="telefone" type="tel" [(ngModel)]="dadosForm.telefone" required></ion-input>
+    </ion-item>
+
+    <!--Input do Endereço-->
+    <ion-item>
+      <ion-label position="floating">Endereço</ion-label>
+      <ion-input name="endereco" type="text" [(ngModel)]="dadosForm.endereco" required></ion-input>
+    </ion-item>
+
+    <!--Input da cidade-->
+    <ion-item>
+      <ion-label position="floating">Cidade</ion-label>
+      <ion-select name="cidade" [(ngModel)]="dadosForm.cidade" interface="action-sheet" required>
+        <ion-select-option value="sao paulo">São Paulo</ion-select-option>
+        <ion-select-option value="rio de janeiro">Rio de Janeiro</ion-select-option>
+        <ion-select-option value="belo horizonte">Belo Horizonte</ion-select-option>
+        <ion-select-option value="outra">Outra</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!--Input dos interesses-->
+    <ion-item>
+      <ion-label>Esportes</ion-label>
+      <ion-checkbox slot="start" (ionChange)="atualizarCheckbox1()"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>Música</ion-label>
+      <ion-checkbox slot="start" (ionChange)="atualizarCheckbox2()"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>Leitura</ion-label>
+      <ion-checkbox slot="start" (ionChange)="atualizarCheckbox3()"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>Viagens</ion-label>
+      <ion-checkbox slot="start" (ionChange)="atualizarCheckbox4()"></ion-checkbox>
+    </ion-item>
+
+    <!--Toggle da newsletter-->
+    <ion-item>
+      <ion-label>Assinar newsletter</ion-label>
+      <ion-toggle name="newsletter" [(ngModel)]="dadosForm.newsletter"></ion-toggle>
+    </ion-item>
+
+    <ion-button type="submit" expand="block" [disabled]="!form.valid">Salvar</ion-button>
+  </form>
+</ion-content>
