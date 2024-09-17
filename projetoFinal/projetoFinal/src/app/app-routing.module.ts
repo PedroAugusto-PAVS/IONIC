@@ -16,9 +16,24 @@ const routes: Routes = [
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
   {
-    path: 'listagem',
-    loadChildren: () => import('./listagem/listagem.module').then( m => m.ListagemPageModule)
+    path: 'register',
+    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
   },
+  {
+    path: 'itens',
+    loadChildren: () => import('./itens/itens.module').then( m => m.ItensPageModule)
+  },
+  {
+    path: 'add-item',
+    loadChildren: () => import('./add-item/add-item.module').then( m => m.AddItemPageModule)
+  },
+  {
+    path: 'edit-item',
+    loadChildren: () => import('./edit-item/edit-item.module').then( m => m.EditItemPageModule)
+  },
+
+
+
 ];
 
 @NgModule({

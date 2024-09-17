@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
 
-  private apiUrl = 'http://localhost/http://localhost/apisIonic/login/auth.php';
+  private apiUrl = 'http://localhost/apisIonic/login/auth.php';
   private token: string | null = null;
 
   constructor(private http: HttpClient) { }

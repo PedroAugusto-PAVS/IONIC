@@ -3,26 +3,25 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: 'login.page.html',
-  styleUrls: ['login.page.scss'],
+  selector: 'app-register',
+  templateUrl: 'register.page.html',
+  styleUrls: ['register.page.scss'],
 })
-export class LoginPage {
+export class RegisterPage {
   email: string = '';
   senha: string = '';
 
   constructor(private router: Router, private http: HttpClient) {}
 
-  login() {
-    this.http.post('http://localhost/apisIonic/api/login.php', {
+  register() {
+    this.http.post('http://localhost/apisIonic/api/register.php', {
       email: this.email,
       senha: this.senha
     }).subscribe((response: any) => {
       if (response.success) {
-        localStorage.setItem('usuarios_id', response.usuarios_id);
-        this.router.navigate(['/itens']);
+        this.router.navigate(['/login']);
       } else {
-        alert('Falha no Login');
+        alert('Erro ao Cadastrar');
       }
     });
   }
