@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 17/09/2024 às 22:33
+-- Tempo de geração: 18/09/2024 às 02:06
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -29,10 +29,11 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `itens` (
   `id` int(11) NOT NULL,
-  `nome` varchar(255) DEFAULT NULL,
-  `quantidade` int(11) DEFAULT NULL,
-  `preco` decimal(10,2) DEFAULT NULL,
-  `adquirido` tinyint(1) DEFAULT 0
+  `nome` varchar(100) NOT NULL,
+  `quantidade` int(11) NOT NULL,
+  `preco` decimal(10,2) NOT NULL,
+  `adquirido` tinyint(1) DEFAULT 0,
+  `usuarios_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -43,10 +44,16 @@ CREATE TABLE `itens` (
 
 CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
-  `nome` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `senha` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `email`, `senha`) VALUES
+(1, 'pedro@gmail.com', '$2y$10$5oXH0Pwqu3BkIbhP.NtP0eSMFObBy/5WDamxiVSDVvIUdpDe4Jowy');
 
 --
 -- Índices para tabelas despejadas
@@ -56,7 +63,8 @@ CREATE TABLE `usuarios` (
 -- Índices de tabela `itens`
 --
 ALTER TABLE `itens`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `usuarios_id` (`usuarios_id`);
 
 --
 -- Índices de tabela `usuarios`
@@ -79,7 +87,17 @@ ALTER TABLE `itens`
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- Restrições para tabelas despejadas
+--
+
+--
+-- Restrições para tabelas `itens`
+--
+ALTER TABLE `itens`
+  ADD CONSTRAINT `itens_ibfk_1` FOREIGN KEY (`usuarios_id`) REFERENCES `usuarios` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
