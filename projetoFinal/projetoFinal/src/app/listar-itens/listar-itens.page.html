@@ -1,0 +1,91 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-button slot="start" (click)="logout()">Logoff</ion-button>
+    </ion-buttons>
+    <ion-segment [(ngModel)]="selectedSegment" color="primary">
+      <ion-segment-button value="nao-adquiridos">
+        Não Adquiridos
+      </ion-segment-button>
+      <ion-segment-button value="adquiridos">
+        Adquiridos
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="listar-itens-container">
+    <ion-card class="listar-itens-card">
+      <!-- Lista de Não-Adquiridos -->
+      <div class="table-container" *ngIf="selectedSegment === 'nao-adquiridos'">
+        <h2>Não Adquiridos</h2>
+        <div class="table-header">
+          <span class="header-item">Produto</span>
+          <span class="header-item">Qtd</span>
+          <span class="header-item">Valor</span>
+        </div>
+        <ion-list class="scrollable-content">
+          <ion-item-sliding *ngFor="let item of itens">
+            <ion-item> 
+              <ion-checkbox slot="start" [checked]="item.adquirido" (ionChange)="onCheckboxChange($event, item)"></ion-checkbox>
+              <div class="item-details">
+                <span class="item-name">{{ item.nome }}</span>
+                <span class="item-quant">{{ item.quant }}</span>
+                <span class="item-value">
+                  <span class="currency-symbol">R$ </span>
+                  {{ item.valor | number: '1.2-2' }}
+                </span>
+              </div>
+            </ion-item>
+            <ion-item-options side="end">
+              <ion-item-option color="danger" (click)="alertExcluirProduto(item)">Remover</ion-item-option>
+              <ion-item-option color="primary" (click)="editarItem(item)">Editar</ion-item-option>
+            </ion-item-options>
+          </ion-item-sliding> 
+        </ion-list>
+        <div class="total-lista">
+          <strong>Total da Lista:</strong>
+          <span> R$ {{ totalValor | number: '1.2-2' }} </span>
+        </div>
+      </div>
+
+      <!-- Lista de Adquiridos -->
+      <div class="table-container" *ngIf="selectedSegment === 'adquiridos'">
+        <h2>Adquiridos</h2>
+        <div class="table-header">
+          <span class="header-item">Produto</span>
+          <span class="header-item">Qtd</span>
+          <span class="header-item">Valor</span>
+        </div>
+        <ion-list class="scrollable-content">
+          <ion-item-sliding *ngFor="let item of itensAdquiridos">
+            <ion-item>
+              <ion-checkbox slot="start" [checked]="true"></ion-checkbox>
+              <div class="item-details">
+                <span class="item-name">{{ item.nome }}</span>
+                <span class="item-quant">{{ item.quant }}</span>
+                <span class="item-value">
+                  <span class="currency-symbol">R$ </span>
+                  {{ item.valor | number: '1.2-2' }}
+                </span>
+              </div>
+            </ion-item>
+            <ion-item-options side="end">
+              <ion-item-option color="primary" (click)="restituirItem(item)">Restituir</ion-item-option>
+            </ion-item-options>
+          </ion-item-sliding>
+        </ion-list>
+        <div class="total-lista">
+          <strong>Total da Lista:</strong>
+          <span> R$ {{ totalValorAdquiridos | number: '1.2-2' }} </span>
+        </div>
+      </div>
+    </ion-card>
+  </div>
+  <ion-fab vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="paginaAdicionarItem()">
+      +
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

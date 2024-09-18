@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { EditItemPageRoutingModule } from './edit-item-routing.module';
+import { ListarItensPageRoutingModule } from './listar-itens-routing.module';
 
-import { EditItemPage } from './edit-item.page';
+import { ListarItensPage } from './listar-itens.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    EditItemPageRoutingModule
+    ListarItensPageRoutingModule
   ],
-  declarations: [EditItemPage]
+  declarations: [ListarItensPage]
 })
-export class EditItemPageModule {}
+export class ListarItensPageModule {}
